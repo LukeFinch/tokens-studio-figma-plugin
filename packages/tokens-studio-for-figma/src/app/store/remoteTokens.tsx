@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useMemo } from 'react';
 import { LDProps } from 'launchdarkly-react-client-sdk/lib/withLDConsumer';
 import compact from 'just-compact';
+import { StorageProviderType } from '@sync-providers/types';
 import { track } from '@/utils/analytics';
 import { useJSONbin } from './providers/jsonbin';
 import useURL from './providers/url';
@@ -20,7 +21,6 @@ import {
 import { ThemeObject, UsedTokenSetsMap } from '@/types';
 import { AsyncMessageTypes } from '@/types/AsyncMessages';
 import { AsyncMessageChannel } from '@/AsyncMessageChannel';
-import { StorageProviderType } from '@/constants/StorageProviderType';
 import { StorageTypeCredentials, StorageTypeFormValues } from '@/types/StorageType';
 import { useGenericVersionedStorage } from './providers/generic/versionedStorage';
 import { RemoteResponseData, RemoteResponseStatus } from '@/types/RemoteResponseData';
@@ -35,6 +35,7 @@ import { notifyToUI } from '@/plugin/notifiers';
 
 export type PushOverrides = { branch: string, commitMessage: string };
 
+// TODO: fix StorageProviderType usage
 type PullTokensOptions = {
   context?: StorageTypeCredentials;
   featureFlags?: LDProps['flags'];

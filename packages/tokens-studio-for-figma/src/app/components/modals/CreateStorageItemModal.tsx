@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import type { StorageProviderType } from '@sync-providers/types';
 import Modal from '../Modal';
 import StorageItemForm from '../StorageItemForm';
 import useRemoteTokens from '../../store/remoteTokens';
 import { StorageTypeFormValues } from '@/types/StorageType';
-import { StorageProviderType } from '@/constants/StorageProviderType';
-import { getProviderIcon } from '@/utils/getProviderIcon';
+import { getProviderIcon } from '@sync-providers/utils';
 import { Eventlike } from '../StorageItemForm/types';
 
 type Props = {
@@ -85,7 +85,7 @@ export default function CreateStorageItemModal({
         onChange={handleChange}
         onSubmit={handleSubmit}
         onCancel={onClose}
-        values={formFields}
+        values={formFields as Extract<StorageTypeFormValues<true>, { provider: StorageProviderType.URL }>}
         hasErrored={hasErrored}
         errorMessage={errorMessage}
       />
